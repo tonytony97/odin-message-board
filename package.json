@@ -1,6 +1,16 @@
 {
-  "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.20.0"
-  }
+    "name": "odin-message-board",
+    "version": "1.0.0",
+    "description": "Test Express.js message board",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Tony",
+    "license": "ISC",
+    "dependencies": {
+        "ejs": "^3.1.10",
+        "express": "^4.20.0"
+    }
 }
