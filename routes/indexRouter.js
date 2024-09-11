@@ -48,15 +48,18 @@ indexRouter.post("/new", (req, res) => {
     res.redirect("/");
 });
 
-//GET details buton data
+//GET details open button data
 indexRouter.get("/:id", (req, res) => {
     const id = req.params.id;
+    const text = messages[id].text;
+    const user = messages[id].user;
+    const date = messages[id].added;
 
     res.render("details", {
         id: id,
-        text: messages[id].text,
-        user: messages[id].user,
-        date: messages[id].added,
+        text: text,
+        user: user,
+        date: date,
     });
 });
 
