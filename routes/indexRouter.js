@@ -1,8 +1,10 @@
-const { Router, text } = require("express");
-//const userController = require("<path-to-user-controller>");
+const { Router } = require("express");
+const userController = require("../controllers/userController");
+indexRouter = Router();
 
 const indexRouter = Router();
 
+/* Original messages array 
 const messages = [
     {
         id: 0,
@@ -17,50 +19,19 @@ const messages = [
         added: new Date(),
     },
 ];
+*/
 
-const links = [
-    { href: "/", text: "Home" },
-    { href: "/new", text: "New Message" },
-];
-
-const openBtn = { href: "/details", text: "Message Details" };
-
-indexRouter.get("/", (req, res) => {
-    res.render("index", {
-        title: "My Messageboard",
-        links: links,
-        messages: messages,
-        open: openBtn,
-    });
-});
+//GET messages and show on index
+indexRouter.get("/", userController.getMessages);
 
 indexRouter.get("/new", (req, res) => {
     res.render("form", { title: "Send Message!" });
 });
 
 //POST form data for new message
-indexRouter.post("/new", (req, res) => {
-    const data = req.body;
-    const msgText = data.msgText;
-    const userName = data.userName;
-    const id = messages.length;
-    messages.push({ text: msgText, user: userName, added: new Date(), id: id });
-    res.redirect("/");
-});
+indexRouter.post("/new", userController.postNewMessage);
 
-//GET details open button data
-indexRouter.get("/:id", (req, res) => {
-    const id = req.params.id;
-    const text = messages[id].text;
-    const user = messages[id].user;
-    const date = messages[id].added;
-
-    res.render("details", {
-        id: id,
-        text: text,
-        user: user,
-        date: date,
-    });
-});
+//GET details button data
+indexRouter.get("/:id", userController.getMessageDetails);
 
 module.exports = indexRouter;

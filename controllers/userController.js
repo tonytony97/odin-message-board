@@ -1,23 +1,41 @@
 const asyncHandler = require("express-async-handler");
+const { render } = require("ejs");
+const db = require("../db/queries");
 
-const getUserById = asyncHandler(async (req, res) => {
-    const userId = req.params.id;
+const links = [
+    { href: "/", text: "Home" },
+    { href: "/new", text: "New Message" },
+];
 
-    const user = await someDBQueryToGetUser(userId);
+const openBtn = { href: "/details", text: "Message Details" };
 
-    if (!user) {
-        throw new CustomNotFoundError("User not found");
-    }
+async function getMessages(req, res) {
+    res.render("index", {
+        title: "My Messageboard",
+        links: links,
+        messages: messages,
+        open: openBtn,
+    });
+}
 
-    res.send(`User found: ${user.name}`);
-});
+async function postNewMessage(params) {
+    const data = req.body;
+    const msgText = data.msgText;
+    const userName = data.userName;
+    const id = messages.length;
+    messages.push({ text: msgText, user: userName, added: new Date(), id: id });
+    res.redirect("/");
+}
 
-const getUsers = asyncHandler(async (req, res) => {
-    // code
-});
+async function getMessageDetails(params) {
+    const id = req.params.id;
 
-const createUser = asyncHandler(async (req, res) => {
-    // code
-});
+    res.render("details", {
+        id: id,
+        text: messages[id].text,
+        user: messages[id].user,
+        date: messages[id].added,
+    });
+}
 
-module.exports = { getUserById, getUsers, createUser };
+module.exports = { getMessages, postNewMessage, getMessageDetails };
