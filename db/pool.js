@@ -7,3 +7,7 @@ module.exports = Pool({
     password: process.env.DATABASE_PASSWORD,
     ssl: "require",
 });
+
+module.exports = new Pool({
+    connectionString: process.env.CONNECT_STRING,
+});
