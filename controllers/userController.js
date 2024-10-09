@@ -1,4 +1,3 @@
-const asyncHandler = require("express-async-handler");
 const { render } = require("ejs");
 const db = require("../db/queries");
 
