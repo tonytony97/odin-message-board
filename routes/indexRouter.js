@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const userController = require("../controllers/userController");
-indexRouter = Router();
 
 const indexRouter = Router();
 

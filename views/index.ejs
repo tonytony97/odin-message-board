@@ -12,7 +12,8 @@
             <% messages.forEach((message) => { %>
             <div id="msg">
                 <p class="userName">
-                    <%- include('messages/message', {message:message.user}); %>
+                    <%- include('messages/message', {message:message.username});
+                    %>
                 </p>
                 <p class="msgText">
                     <%-include('messages/message', {message:message.text}); %>

@@ -9,10 +9,11 @@ const links = [
 const openBtn = { href: "/details", text: "Message Details" };
 
 async function getMessages(req, res) {
+    const usernames = await db.getAllMessages();
     res.render("index", {
         title: "My Messageboard",
         links: links,
-        messages: messages,
+        messages: usernames,
         open: openBtn,
     });
 }
