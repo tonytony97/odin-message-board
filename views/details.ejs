@@ -1,4 +1,26 @@
-<div>ID: <%- id %></div>
-<div>Message Text: <%- text %></div>
-<div>User Name: <%- user %></div>
-<div>Date Added: <%- date %></div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%- title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% messages.forEach((message) => { %>
+        <div>ID: <%-include('messages/message', {message:message.id}); %></div>
+        <div>
+            Message Text: <%-include('messages/message',
+            {message:message.text_message}); %>
+        </div>
+        <div>
+            User Name: <%- include('messages/message',
+            {message:message.username}); %>
+        </div>
+        <div>
+            Date Added: <%-include('messages/message',
+            {message:message.date_added}); %>
+        </div>
+        <% });%>
+    </body>
+</html>

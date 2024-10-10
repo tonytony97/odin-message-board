@@ -7,23 +7,27 @@
         <link rel="stylesheet" , href="./styles.css" />
     </head>
     <body>
-        <%- include ('navbar',{links:links});%>
+        <h1><%= title %></h1>
+        <%- include ('navbar',{links:links}); %>
         <ul>
             <% messages.forEach((message) => { %>
             <div id="msg">
+                <p class="id">
+                    <%-include('messages/message', {message:message.id}); %>
+                </p>
                 <p class="userName">
                     <%- include('messages/message', {message:message.username});
                     %>
                 </p>
                 <p class="msgText">
-                    <%-include('messages/message', {message:message.text}); %>
+                    <%-include('messages/message',
+                    {message:message.text_message}); %>
                 </p>
                 <p class="date">
-                    <%-include('messages/message', {message:message.added}); %>
+                    <%-include('messages/message',
+                    {message:message.date_added}); %>
                 </p>
-                <p class="id">
-                    <%-include('messages/message', {message:message.id}); %>
-                </p>
+
                 <button>
                     <a
                         class="details"

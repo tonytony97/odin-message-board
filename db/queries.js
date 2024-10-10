@@ -5,16 +5,16 @@ async function getAllMessages() {
     return rows;
 }
 
-async function insertMessage(username, message) {
-    await pool.query("INSERT INTO messages (username,message) VALUES ($1,$2)", [
-        username,
-        message,
-    ]);
+async function postNewMessage(username, message) {
+    await pool.query(
+        "INSERT INTO messages (username,text_message,date_added) VALUES ($1,$2,CURRENT_TIMESTAMP)",
+        [username, message],
+    );
 }
 
 async function getMessageDetails(id) {
     const { rows } = await pool.query(
-        "SELECT * FROM messages WHERE id LIKE ($1)",
+        "SELECT * FROM messages WHERE id = ($1)",
         [id],
     );
     return rows;
@@ -22,6 +22,6 @@ async function getMessageDetails(id) {
 
 module.exports = {
     getAllMessages,
-    insertMessage,
+    postNewMessage,
     getMessageDetails,
 };

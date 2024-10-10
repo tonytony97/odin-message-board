@@ -9,32 +9,32 @@ const links = [
 const openBtn = { href: "/details", text: "Message Details" };
 
 async function getMessages(req, res) {
-    const usernames = await db.getAllMessages();
+    const messages = await db.getAllMessages();
+    console.log("messages: ", messages);
     res.render("index", {
         title: "My Messageboard",
         links: links,
-        messages: usernames,
+        messages: messages,
         open: openBtn,
     });
 }
 
-async function postNewMessage(params) {
+async function postNewMessage(req, res) {
     const data = req.body;
     const msgText = data.msgText;
     const userName = data.userName;
-    const id = messages.length;
-    messages.push({ text: msgText, user: userName, added: new Date(), id: id });
+    await db.postNewMessage(userName, msgText);
+    console.log("req.body: ", req.body);
     res.redirect("/");
 }
 
-async function getMessageDetails(params) {
+async function getMessageDetails(req, res) {
     const id = req.params.id;
-
+    const message = await db.getMessageDetails(id);
+    console.log("message: ", message);
     res.render("details", {
-        id: id,
-        text: messages[id].text,
-        user: messages[id].user,
-        date: messages[id].added,
+        title: "Message Details",
+        messages: message,
     });
 }
 
