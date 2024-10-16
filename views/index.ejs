@@ -12,9 +12,6 @@
         <ul>
             <% messages.forEach((message) => { %>
             <div id="msg">
-                <p class="id">
-                    <%-include('messages/message', {message:message.id}); %>
-                </p>
                 <p class="userName">
                     <%- include('messages/message', {message:message.username});
                     %>
@@ -30,9 +27,9 @@
 
                 <button>
                     <a
-                        class="details"
+                        class="button"
                         href="/<%-include('messages/message', {message:message.id}); %>"
-                        >Open</a
+                        >More Details</a
                     >
                 </button>
             </div>

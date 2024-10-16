@@ -4,23 +4,29 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><%- title %></title>
+        <link rel="stylesheet" , href="./styles.css" />
     </head>
     <body>
         <h1><%= title %></h1>
-        <% messages.forEach((message) => { %>
-        <div>ID: <%-include('messages/message', {message:message.id}); %></div>
-        <div>
-            Message Text: <%-include('messages/message',
-            {message:message.text_message}); %>
+        <%- include ('navbar',{links:links}); %>
+        <div id="details">
+            <% messages.forEach((message) => { %>
+            <div>
+                ID: <%-include('messages/message', {message:message.id}); %>
+            </div>
+            <div>
+                Message Text: <%-include('messages/message',
+                {message:message.text_message}); %>
+            </div>
+            <div>
+                User Name: <%- include('messages/message',
+                {message:message.username}); %>
+            </div>
+            <div>
+                Date Added: <%-include('messages/message',
+                {message:message.date_added}); %>
+            </div>
+            <% });%>
         </div>
-        <div>
-            User Name: <%- include('messages/message',
-            {message:message.username}); %>
-        </div>
-        <div>
-            Date Added: <%-include('messages/message',
-            {message:message.date_added}); %>
-        </div>
-        <% });%>
     </body>
 </html>

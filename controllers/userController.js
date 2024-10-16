@@ -34,6 +34,7 @@ async function getMessageDetails(req, res) {
     console.log("message: ", message);
     res.render("details", {
         title: "Message Details",
+        links: links,
         messages: message,
     });
 }
