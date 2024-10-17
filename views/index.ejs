@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
         <title><%- title %></title>
-        <link rel="stylesheet" , href="./styles.css" />
     </head>
     <body>
         <h1><%= title %></h1>
@@ -28,7 +28,7 @@
                 <button>
                     <a
                         class="button"
-                        href="/<%-include('messages/message', {message:message.id}); %>"
+                        href="/<%-include('messages/message', {message:message.id});%>/details"
                         >More Details</a
                     >
                 </button>

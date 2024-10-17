@@ -31,6 +31,6 @@ indexRouter.get("/new", (req, res) => {
 indexRouter.post("/new", userController.postNewMessage);
 
 //GET details button data
-indexRouter.get("/:id", userController.getMessageDetails);
+indexRouter.get("/:id/details", userController.getMessageDetails);
 
 module.exports = indexRouter;

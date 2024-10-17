@@ -6,7 +6,7 @@ const links = [
     { href: "/new", text: "New Message" },
 ];
 
-const openBtn = { href: "/details", text: "Message Details" };
+const openBtn = { text: "Message Details" };
 
 async function getMessages(req, res) {
     const messages = await db.getAllMessages();
@@ -30,6 +30,7 @@ async function postNewMessage(req, res) {
 
 async function getMessageDetails(req, res) {
     const id = req.params.id;
+    console.log("ID: ", id);
     const message = await db.getMessageDetails(id);
     console.log("message: ", message);
     res.render("details", {

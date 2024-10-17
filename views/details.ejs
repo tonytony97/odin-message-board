@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/./styles.css" />
         <title><%- title %></title>
-        <link rel="stylesheet" , href="./styles.css" />
     </head>
     <body>
         <h1><%= title %></h1>
@@ -12,10 +12,10 @@
         <div id="details">
             <% messages.forEach((message) => { %>
             <div>
-                ID: <%-include('messages/message', {message:message.id}); %>
+                ID: <%- include('messages/message', {message:message.id}); %>
             </div>
             <div>
-                Message Text: <%-include('messages/message',
+                Message Text: <%- include('messages/message',
                 {message:message.text_message}); %>
             </div>
             <div>
